@@ -1,0 +1,9 @@
+sass install with npm:
+-------------------------
+1.first install npm:
+=> npm init -y
+
+2.then install sass:
+=> npm install sass --save-dev
+
+-------------------------------

@@ -1,0 +1,37 @@
+@use '../abstracts' as *;
+
+.container {
+  @include flow(2);
+}
+
+.wrapper {
+  @include set-background($gray-100);
+}
+
+.content {
+  @include set-background($gray-100);
+  @include padding($value: 1.5rem);
+}
+
+.row {
+  .col > div {
+    @include border();
+    @include border-radius();
+    @include padding();
+  }
+}
+
+.cols {
+  @include border();
+  @include border-radius();
+  @include padding();
+}
+
+pre {
+  @include set-background($gray-200);
+  @include padding($value: 1.5rem);
+}
+
+code {
+  color: $pink;
+}

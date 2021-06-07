@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!-- <meta http-equiv="refresh" content="5; url=https://www.google.com/" />     -->
+    <meta name="description" content="project-name" />
+    <meta name="keywards" content="project-name" />
+    <meta name="author" content="" />
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no"
+    />
+    <title>Documentation - Scss v1.0</title>
+
+    <!--css file-->
+    <link rel="stylesheet" href="./css/fontawesome.css" />
+    <link rel="stylesheet" href="./css/webfonts.css" />
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="shortcut icon" href="./images/favicon.png" type="image/x-icon" />
+  </head>
+  <body>
+    <div class="container my-3">
+      <h3>Documentation :</h3>     
+    </div>
+
+    <div class="container">
+
+      <!-- Folder structure -->
+      <div class="content flow">
+        <h5>Folder structure:</h5>
+        <hr>
+        <p>Files should be imported according to the folder they live in, one after the other in the following order: to see the structure in Architecture.txt</p>
+        <p>In this folder structure many scss files use here.</p>
+        <p>you can use <code>main.scss</code> file to get all marged file or use indivisually <code>.scss</code> file to get only indivisual <code>.scss</code> file property.</p>
+        <pre>
+main.scss           // all scss file marged in one scss file
+
+style.scss          // only custom styles marged here
+fontawesome.scss    // only fontawesome file marged here
+webfonts.scss       // only webfonts styles marged here   </pre>
+      </div> 
+      
+      <!-- Theme colors -->
+      <div class="content flow">
+        <h5>Theme colors:</h5>
+        <hr>
+        <p>All colors are available as Sass variables and a Sass map in scss/abstract/_variables.scss file.</p>
+        <p>You can customize predefine theme color for your project requirement in scss/abstract/_theme.scss file.</p>
+        <p>you can add more variable in _theme.scss but remember also add this variable into theme-colors-map in scss/abstract/_variables.scss</p>
+      </div> 
+
+      <!-- CSS variables -->
+      <div class="content flow">
+        <h5>CSS variables:</h5>
+        <hr>
+        <p>Here are the variables we include (note that the :root is required) that can be accessed anywhere CSS is loaded. They’re located in our scss/base/_root.scss file.</p>
+        <p>this root variable marged with Theme colors. if you add more Theme colors it's automatically added same variable name in css variable.</p>
+      </div>  
+
+      <!-- Breakpoints -->
+
+      <div class="content flow">
+        <h5>Breakpoints:</h5>
+        <hr>
+        <p>Bootstrap includes six default breakpoints, sometimes referred to as grid tiers, for building responsively. These breakpoints can be customized if you’re using our source Sass files.</p>
+        <p>These breakpoints are customizable via Sass—you’ll find them in a Sass map in our scss/abstract/mixins/_breakpoints2.scss.</p>
+<pre>
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1400px
+);
+</pre>
+        <h6>Use this media query:</h6>
+        <h6></h6>
+        <p><b>Min-width: </b>@include media-breakpoint-up(sm) { ... }</p>
+        <p><b>Max-width: </b>@include media-breakpoint-down(sm) { ... }</p>
+        <p><b>Single breakpoint: </b>@include media-breakpoint-only(sm) { ... }</p>
+        <p><b>Between breakpoints: </b>@include media-breakpoint-between(md, xl) { ... }</p>
+        
+        <pre>
+// Example: 
+@include media-breakpoint-up(sm) {
+  .custom-class {
+    display: block;
+  }
+}
+
+// output:
+@media (min-width: 36rem) { 
+  .custom-class {
+    display: block;
+  }
+}
+        </pre>
+      </div>  
+
+      <!-- Containers -->
+
+      <div class="content flow">
+        <h5>Containers:</h5>
+        <hr>
+        <p>there are three different containers:</p>
+        <ul>
+          <li><code>.container</code>, which sets a <code>max-width</code> at each responsive breakpoint</li>
+          <li><code>.container-fluid</code>, which is <code>width: 100%</code> at all breakpoints</li>
+          <li><code>.container-{breakpoint}</code>, which is <code>width: 100%</code> until the specified breakpoint</li>
+        </ul>
+        <p>This container width modified with breakpoint value in scss/abstract/mixins/_breakpoints2.scss.</p>
+        <h6>container-max-widths:</h6>
+        <p><code>.container-max-{breakpoint}</code>, which is maxium width in breakpoint</p>
+        <p>You can modify container max-width value in scss/abstract/_variables.scss file.</p>
+      </div>
+
+      <!-- width -->
+
+      <div class="content flow">
+        <h5>width and height:</h5>
+        <hr>
+        <p>there are different types of width and height value.</p>
+        <p>width and height modified with breakpoint value in scss/abstract/mixins/_breakpoints2.scss.</p>
+        <p><code>.width-{value}</code>, and <code>.width-{breakpoint}-{value}</code>, you can use in classes</p>
+        <p>You can modify width value in scss/abstract/_variables.scss file.</p>
+        <pre>
+// This variable affects the `.h-*` and `.w-*` classes.
+25: 25%,
+50: 50%,
+75: 75%,
+100: 100%,
+auto: auto 
+
+// example
+< div class="w-25"> width 25% < / div>
+< div class="h-25"> height 25% < / div>
+< div class="w-sm-25"> width 25% in small device < / div>
+
+//output
+div {
+  width: 25%;
+}  
+div {
+  height: 25%;
+}  
+@media (min-width: 36rem) {
+  div {
+    width: 25%;
+  } 
+}        </pre>
+      </div>
+
+      <!-- Grid system -->
+
+      <div class="content flow">
+        <h5>Grid system:</h5>
+        <hr>
+        <h6>Flex:</h6>
+        <p>this grid system are follow by Bootstrap’s grid system uses a series of containers, rows, and columns to layout. It’s built with flexbox and is fully responsive.</p>
+        <p>Use flexbox alignment utilities to vertically and horizontally align columns.</p>
+        <pre>
+row           // use this class as parent class 
+col
+col-auto  
+col-1 
+col-sm-auto   // responsive col classs with auto width
+col-sm-1      // responsive col classs with calculate ((1 / 12) *100%) of width
+
+// Vertical alignment
+align-items-start
+align-items-end
+align-items-center
+align-items-baseline
+align-items-stretch
+
+// Horizontal alignment
+justify-content-start
+justify-content-end
+justify-content-center
+justify-content-between
+justify-content-around
+justify-content-evenly
+
+// Reordering
+order-fast
+order-last
+order-1
+order-sm-1    // responsive order
+
+// Offsetting columns
+offset-1
+offset-sm-1
+
+// Row columns
+row-cols-3      // row define with 3 columns 
+row-cols-sm-3   // row define with 3 columns in small device
+        </pre>
+        <h6>Grid:</h6>
+        <p>this grid system are follow by custom grid system uses a series of grid, cols, gg, and span to layout. It’s built with grid and is fully responsive.</p> 
+        <p>use <code>grid</code> class as a parent class.</p>   
+        <p>use <code>cols</code> class as a child classes.</p>   
+        <p>use <code>gg</code> class for grid gap.</p>   
+        <p>use <code>span</code> class for span one or more columns.</p> 
+        <pre>
+grid            // parent class
+
+cols-1          // column 1
+cols-sm-1       // column 1 in small device 
+
+gg-1            // grid-gap
+ggr-1           // grid-row-gap
+ggc-1           // grid-column-gap
+gg-sm-1         // grid-gap in small device
+
+span-1          // grid-column: span 1; grid-row: span 1;
+col-span-1      // grid-column: span 1;
+row-span-1      // grid-row: span 1;
+span-sm-1       // grid-column: span 1; (in small device)
+row-span-md-3   // grid-row: span 3; (in medium device)
+
+// example
+< div class="cols-sm-2 gg1"> 
+  < div class="col-span-1"> content here < / div>
+< / div>
+        </pre>  
+      </div>
+
+      <!-- Gutters -->
+
+      <div class="content flow">
+        <h5>Gutters:</h5>
+        <hr>
+        <p>Gutters are the padding between your columns, used to responsively space in the grid system same as Bootstrap grid system.</p>   
+        <pre>
+// use this class in parent class (1-5 range avaliable)
+g-1     // Horizontal & vertical gutters      
+gx-1    // Horizontal gutters
+gy-1    // Vertical gutters    </pre>       
+      </div>
+
+      <!-- Margin and padding -->
+
+      <div class="content flow">
+        <h5>Margin and padding:</h5>
+        <hr>
+        <p>Use the <code>margin</code> and <code>padding</code> spacing utilities to control how elements and components are spaced and sized.</p>
+        <p>these classes are define same as bootstrap classes.</p>  
+        <pre>
+m-auto 
+ms-auto
+m-1      // margin in 4 sides
+ms-1     // left
+me-1     // right
+mt-1     // top 
+mb-1     // bottom 
+mx-1     // left right 
+my-1     // top bottom
+m-sm-1  // responsive in 4 sides
+
+same classes using with padding  </pre>     
+      </div>
+
+      <!-- Buttons -->
+
+      <div class="content flow">
+        <h5>Buttons:</h5>
+        <hr>
+        <p>Includes several predefined button styles, each serving its own semantic purpose, with a few extras thrown in for more control.</p>
+        <p>these classes are define same as bootstrap classes.</p>  
+        <p><b>Note:</b> you can customize more btn classes in scss/abstract/_variables.scss file.
+        these classes are follow with <code>$theme-classes maps</code>. if you add more <code>$theme-colors variable</code>, its automatically generate more buttons with this variable colors name.</p>
+        <pre>
+btn-primary 
+btn-secondary 
+etc... </pre>     
+      </div>
+
+      <!-- Utilities -->
+
+      <div class="content flow">
+        <h5>Utilities:</h5>
+        <hr>
+
+        <h6 class="text-primary">set-background:</h6> 
+        <p>You can set text color as per background color in css.</p> 
+        <p><b>@include set-background(use bg-color name);</b></p> 
+        <pre>
+// example          
+div {
+  @include set-background(black);
+}
+
+// output
+
+div {
+  background: black;
+  color: white;
+}
+        </pre>
+
+        <h6 class="text-primary">content gap:</h6>
+        <p>You can set content gap.</p>
+        <p><b>@include flow();</b></p>
+        <p>in this () space you can set you gap value.</p>
+        <p>You can use also a css variable for set content gap.</p>
+        <p><b>Note:</b> You can use <code>flow</code> class instead of using css property.</p>
+        <pre>
+// example
+< div class="flow"> font weight thin < / div> 
+
+div {
+  --flow-spacer: 0.5rem; // use css variable to overwite scss variable
+  @include flow();
+}
+
+// output
+.flow > * + * {
+  margin-top: var(--flow-spacer, 1em);
+}
+div > * + * {
+  margin-top: var(--flow-spacer, 1em);
+}
+          </pre>
+          
+          <h6 class="text-primary">Spacing:</h6>
+          <p>You can set margin and padding value in css. set default value is <code>0.5rem</code>.</p>
+          <p><b>@include margin();</b></p>
+          <p><b>@include padding();</b></p>
+          <p>You can customize predefine spacing value in scss/abstract/mixins/_spacing.scss file.</p>
+          <p><b>Note:</b> if you set only value without specify position then use @include margin($value: 1rem);</p>
+          <p><b>Note: you can also use margin and padding classes with responsive classes to avoid using css.</b></p> 
+          <pre>
+// example          
+div {
+  @include margin();  // use dafault value 0.5rem in 4 sides
+  @include margin(top); // use default value in top position
+  @include margin(top, 2rem); // set value in top
+  @include margin($value: 1rem); // set value in 4 sides
+}
+
+// output
+div > * + * {
+  margin: 0.5rem;
+  margin-top: 0.5rem;
+  margin-top: 2rem;
+  margin: 1rem;
+}
+          </pre>
+
+          <h6 class="text-primary">Border:</h6>
+          <p>You can set border value in css. set default value is <code>1px #dee2e6 solid</code>.</p>
+          <p><b>@include border();</b></p>
+          <p>You can customize predefine border value in scss/abstract/mixins/_border.scss file.</p>
+          <pre>
+$position: false,
+$width: $border-width,
+$color: $border-color,
+$style: solid
+
+// example          
+div {
+  @include border();  // set dafault value in 4 sides
+  @include border(top); // set default value in top position
+  @include border(top, 2px); // set value in top position with border-width value
+  @include border($width: 2px); // set value in 4 sides with border-width value
+}
+
+// output
+div {
+  border: 1px #dee2e6 solid;
+  border-top: 1px #dee2e6 solid;
+  border-top: 2px #dee2e6 solid;
+  border: 2px #dee2e6 solid;
+}
+          </pre>
+
+          <h6 class="text-primary">font-weight:</h6>
+          <p>You can set font-weight value in css.</p>
+          <p><b>@include weight();</b></p>
+          <p>You can customize predefine font-weight value in scss/abstract/_variables.scss file.</p>
+          <p><b>Note: you can also use font-weight classes with responsive classes to avoid using css.</b></p>
+          <pre>
+thin: $font-weight-thin,
+exlight: $font-weight-exlight,
+light: $font-weight-light,
+regular: $font-weight-regular,
+medium: $font-weight-medium,
+smbold: $font-weight-smbold,
+bold: $font-weight-bold,
+exbold: $font-weight-exbold,
+black: $font-weight-black
+
+// example  
+div {
+  @include weight(thin); // set font-weight value use with mixins
+  font-weight: $font-weight-regular; // or you can use with scss variable 
+}
+
+< p class="fw-thin"> font weight thin < / p> 
+< p class="fw-sm-thin"> font weight thin < / p>
+
+// output
+div {
+  font-weight: 100;
+  font-weight: 400;
+}
+
+.fw-thin {
+  font-weight: 100;
+}
+@media (min-width: 36rem) {
+  .fw-sm-thin {
+      font-weight: 100;
+  }
+}
+          </pre>
+
+          <h6 class="text-primary">font-family:</h6>
+          <p>You can set font-family value in css.</p>
+          <p><b>@include family();</b></p>
+          <p>You can customize predefine font-family value in scss/abstract/_variables.scss file.</p>
+          <pre>
+$font-family-base: "Poppins", sans-serif;
+$font-family-heading: "Poppins", sans-serif;
+$font-family-display: "Rancho", cursive;
+
+// example          
+div {
+  @include family(base); // set font-family value use with mixins
+  font-family: $font-family-display; // or you can use with scss variable 
+}
+
+// output
+div {
+  font-family: "Poppins", sans-serif;
+  font-family: "Rancho", cursive;
+}          </pre>
+
+          <h6 class="text-primary">colors:</h6>
+          <p>You can set colors value in css.</p>
+          <p><b>color: color(primary);</b></p>
+          <p>You can customize predefine color value in scss/abstract/_variables.scss file.</p>
+          <p><b>Note: you can also use color classes to avoid using css.</b></p>
+          <pre>
+// example   
+< p class="text-primary"> primary color < / p> 
+< div class="bg-primary"> primary color < / div>
+
+div {
+  color: color(primary); // set color using color function 
+  (in this case only use $theme-colors map variables)
+  color: $primary;       // set color using scss vaiable
+}
+
+// output
+.text-primary {
+  color: #0d6efd;
+}
+.bg-primary {
+  color: #0d6efd;
+}
+div {
+  color: #0d6efd;
+  color: #0d6efd;
+}           </pre>
+
+            <h6 class="text-primary">text-align:</h6>
+            <p>You can set text-align value in css.</p>
+            <p><b>@include text();</b></p>
+            <p>You can customize predefine text-align value in scss/abstract/_variables.scss file.</p>
+            <p><b>Note: you can also use text-align classes to avoid using css.</b></p>
+            <pre>
+start: left,
+end: right,
+center: center
+
+// example   
+< div class="text-center"> text align class < / div> 
+
+p {
+  @include text(start);
+}
+
+// output
+div {
+  text-align: center;
+}
+p {
+  text-align: left;
+}
+          </pre> 
+
+          <h6 class="text-primary">Color Shade:</h6>
+          <p>You can set color shade value in css.</p>
+          <p><b>tint-color(color, persentage);</b></p>
+          <p><b>shade-color(color, persentage);</b></p>
+          <p><b>shift-color(color, persentage);</b></p>
+          <pre>
+// example   
+div {
+  background-color: tint-color(blue, 42%);
+  background-color: shade-color(blue, 42%);
+
+  background-color: shift-color(blue, 40%);       (> 50%  lighten  /  < 50%  darken)
+}
+
+
+// output
+div {
+  background-color: set blue color in 42% lighten
+  background-color: set blue color in 42% darken
+  background-color: set blue color in 40% lighten
+}           </pre>
+
+            <h6 class="text-primary">Border-radius:</h6>
+            <p>You can set Border-radius value in css. default value is 0.25rem.</p>
+            <p><b>@include border-radius();</b></p>
+            <p><b>@include border-top-radius();</b></p>
+            <p><b>@include border-end-radius();</b></p>
+            <p><b>@include border-bottom-radius();</b></p>
+            <p><b>@include border-start-radius();</b></p>
+            <p><b>@include border-top-start-radius();</b></p>
+            <p><b>@include border-top-end-radius();</b></p>
+            <p><b>@include border-bottom-end-radius();</b></p>
+            <p><b>@include border-bottom-start-radius();</b></p>
+            <pre>
+// example   
+div {
+  @include border-top-radius(1rem);
+}
+
+// output
+div {
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+}          </pre>
+
+            <h6 class="text-primary">Clearfix:</h6>
+            <p>You can set Clearfix value in css.</p>
+            <p><b>@include clearfix();</b></p>
+            <p><b>Note: you can also use Clearfix classes to avoid using css.</b></p>
+            <pre>
+// example   
+div {
+  @include clearfix();
+}
+< div class="clearfix"> clearfix class < / div>
+
+// output
+.clearfix::after {
+  display: block;
+  clear: both;
+  content: "";
+}         </pre>
+
+
+
+
+            
+          
+
+
+      </div>
+
+
+    </div>
+
+    
+    
+
+    <!--js file-->
+  </body>
+</html>

@@ -1,0 +1,20 @@
+@use './abstracts' as *;
+@use './vendors';
+@use './base/font-face';
+@use './base';
+@use './components';
+@use './layout';
+@use './pages';
+
+// add your custom style here 'themes/theme.scss'
+
+.foo {
+  color: tint-color(#bada55, 42%);
+}
+
+.bar {
+  background-color: shade-color(#bada55, 42%);
+}
+.abc {
+  background-color: shift-color(#bada55, 42%);
+}
